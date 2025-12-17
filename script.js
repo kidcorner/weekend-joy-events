@@ -24,21 +24,59 @@ function createParticles() {
 // Initialize particles on page load
 createParticles();
 
-// Navbar scroll effect
+// Navbar scroll effect with section-based color changes
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+// Section color mapping (purple → orange → red → green cycle)
+const sectionColors = {
+    'hero': 'purple',
+    'this-weekend': 'purple',
+    'activities': 'orange',
+    'families': 'red',
+    'events': 'green',
+    'newsletter': 'purple'
+};
+
+function updateNavbarColor() {
+    const scrollPos = window.pageYOffset;
+    const windowHeight = window.innerHeight;
     
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
+    // Remove all color classes
+    navbar.classList.remove('purple', 'orange', 'red', 'green');
+    
+    if (scrollPos < 50) {
         navbar.classList.remove('scrolled');
+        return;
     }
     
-    lastScroll = currentScroll;
+    navbar.classList.add('scrolled');
+    
+    // Determine which section is in view
+    const sections = document.querySelectorAll('section[id], .hero');
+    let currentSection = 'hero';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.id || 'hero';
+        
+        if (scrollPos >= sectionTop) {
+            currentSection = sectionId;
+        }
+    });
+    
+    // Apply color based on section
+    const color = sectionColors[currentSection] || 'purple';
+    navbar.classList.add(color);
+}
+
+window.addEventListener('scroll', () => {
+    updateNavbarColor();
+    lastScroll = window.pageYOffset;
 });
+
+// Initial check
+updateNavbarColor();
 
 // Mobile Menu Toggle
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

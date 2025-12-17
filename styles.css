@@ -12,7 +12,7 @@
     --color-blue: #4A90E2;
     --color-orange: #FF9F1C;
     --color-yellow: #FFB84D;
-    --color-red: #E63946;
+    --color-red: #D62828;
     --color-green: #06A77D;
 }
 
@@ -99,6 +99,27 @@ body {
     background: rgba(90, 74, 159, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(90, 74, 159, 0.3);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled.purple {
+    background: rgba(90, 74, 159, 0.95);
+    box-shadow: 0 4px 20px rgba(90, 74, 159, 0.3);
+}
+
+.navbar.scrolled.orange {
+    background: rgba(255, 159, 28, 0.95);
+    box-shadow: 0 4px 20px rgba(255, 159, 28, 0.3);
+}
+
+.navbar.scrolled.red {
+    background: rgba(214, 40, 40, 0.95);
+    box-shadow: 0 4px 20px rgba(214, 40, 40, 0.3);
+}
+
+.navbar.scrolled.green {
+    background: rgba(6, 167, 125, 0.95);
+    box-shadow: 0 4px 20px rgba(6, 167, 125, 0.3);
 }
 
 .navbar.scrolled .logo h1,
@@ -622,12 +643,12 @@ body {
 }
 
 .guide-card:nth-child(2) .guide-number {
-    background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-yellow) 100%);
+    background: linear-gradient(135deg, var(--color-blue) 0%, #5BA3E8 100%);
     color: white;
 }
 
 .guide-card:nth-child(3) .guide-number {
-    background: linear-gradient(135deg, var(--color-red) 0%, #FF6B6B 100%);
+    background: linear-gradient(135deg, var(--color-green) 0%, #20C997 100%);
     color: white;
 }
 
